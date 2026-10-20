@@ -1,22 +1,29 @@
 #include <iostream>
 
 int main() {
-    double a, b;
-    char operation;
-    std::cout << "Введите два числа: ";
-    std::cin >> a >> b;
-    std::cout << "Введите операцию (+, -, *, /): ";
-    std::cin >> operation;
+    int n;
+    std::cout << "Введите число: ";
+    std::cin >> n;
 
-    switch (operation) {
-        case '+': std::cout << "Результат: " << a + b << "\n"; break;
-        case '-': std::cout << "Результат: " << a - b << "\n"; break;
-        case '*': std::cout << "Результат: " << a * b << "\n"; break;
-        case '/':
-            if (b == 0) std::cout << "Ошибка: деление на ноль!\n";
-            else std::cout << "Результат: " << a / b << "\n";
-            break;
-        default: std::cout << "Неизвестная операция\n";
+    int original = n;
+    int count = 0;
+    int total = 0;
+    int product = 1;
+    int reversedNum = 0;
+
+    while (n > 0) {
+        int digit = n % 10;
+        ++count;
+        total += digit;
+        product *= digit;
+        reversedNum = reversedNum * 10 + digit;
+        n /= 10;
     }
+
+    std::cout << "Количество цифр: " << count << "\n";
+    std::cout << "Сумма цифр: " << total << "\n";
+    std::cout << "Произведение цифр: " << product << "\n";
+    std::cout << "Перевёрнутое число: " << reversedNum << "\n";
+
     return 0;
 }
